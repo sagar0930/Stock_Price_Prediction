@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200vh;
+    }
+
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: calc(100% - 24px);
+      padding: 12px;
+      margin-top: 6px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      margin-top: 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    .prediction {
+      margin-top: 20px;
+      font-size: 16px;
+      background-color: #e1f5fe;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="login">
+      <h1>Stock Price Prediction</h1>
+
+      <form action="/predict" method="post">
+
+      
+        <label for="Date">Date:</label>
+        <input type="text" id="Date" name="Date">
+        
+        <label for="Open">Open:</label>
+        <input type="text" id="Open" name="Open">
+        
+        <label for="High">High:</label>
+        <input type="text" id="High" name="High">
+        
+        <label for="Low">Low:</label>
+        <input type="text" id="Low" name="Low">
+        
+        <label for="Volume">Volume:</label>
+        <input type="text" id="Volume" name="Volume">
+        
+        <label for="headline_sentiment">Headline Sentiment:</label>
+        <input type="text" id="headline_sentiment" name="headline_sentiment">
+        
+        <label for="summary_sentiment">Summary Sentiment:</label>
+        <input type="text" id="summary_sentiment" name="summary_sentiment">
+
+        <button type="submit">Predict</button>
+      </form>
+
+      <div class="prediction">
+        {% if prediction_text %}
+        Predicted Close: {{ prediction_text }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
